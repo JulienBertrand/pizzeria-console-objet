@@ -30,6 +30,13 @@ public class Pizza {
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public Pizza(String code, String nom, double prix) {
 		this.id = nextId;
@@ -38,4 +45,6 @@ public class Pizza {
 		this.prix = prix;
 		nextId++;
 	}
+
+	
 }

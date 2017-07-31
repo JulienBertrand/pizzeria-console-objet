@@ -40,74 +40,24 @@ public class PizzeriaAdminConsoleApp {
 			choix = questionUser.nextInt();
 
 			if (choix == 1) {
-
-				System.out.println("Liste des pizzas");
-				System.out.println();
-
-				for (int i = 0; i < pizzas.length; i++) {
-					if (pizzas[i] != null) {
-						System.out.println(
-								pizzas[i].getCode() + ">" + pizzas[i].getNom() + ">" + pizzas[i].getPrix() + " \u20AC");
-					}
-				}
-
-				System.out.println();
-				System.out.println("**************************************");
+				ListerPizzaOptionMenu afficherMenu = new ListerPizzaOptionMenu(pizzas);
+				afficherMenu.execute();
 			}
 			if (choix == 2) {
-
-				System.out.println("Ajouter une nouvelle pizza");
-				System.out.println();
-
-				String nouveauNom = null;
-				String nouveauCode = null;
-				double nouveauPrix = 0;
-
-				System.out.println("Veuillez saisir le code"); // je demande à l'utlilsateur le code de la nouvelle pizza
-
-					
-					nouveauCode = questionUser.toString();
-				
-
-				System.out.println("Veuillez saisir le nom"); // je demande à l'utlilsateur le nom de la nouvelle pizza
-				
-				
-					nouveauNom = questionUser.toString();
-				
-				
-
-				System.out.println("Veuillez saisir le prix"); // je demande à l'utlilsateur le prix de la nouvelle pizza
-				nouveauPrix = questionUser.nextInt();
-
-				Pizza nouvellePizza = new Pizza(nouveauCode, nouveauNom, nouveauPrix); // je créé la nouvelle pizza
-
-				
-				
-				
-
-				// ajouter nouvelle pizza
-
-				
-
-				// je recherche un emplacement libre dans le tableau pour y insérer la nouvelle
-				// pizza
-
+				NouvellePizzaOptionMenu nouvellePizza = new NouvellePizzaOptionMenu(pizzas, questionUser);
+				nouvellePizza.execute();
 			}
 			if (choix == 3) {
-
-				System.out.println("Modifier un pizza");
-				System.out.println();
+				ModifierPizzaOptionMenu modifierPizza = new ModifierPizzaOptionMenu(pizzas, questionUser);
+				modifierPizza.execute();
 			}
 			if (choix == 4) {
-
-				System.out.println("Suppression d'une pizza");
-				System.out.println();
+				SupprimerPizzaOptionMenu supprimerPizza = new SupprimerPizzaOptionMenu(pizzas, questionUser);
+				supprimerPizza.execute();
 			}
 			if (choix == 99) {
-
 				System.out.println("Au revoir");
 			}
-
 		} while (choix != 99);
 
 		questionUser.close();
