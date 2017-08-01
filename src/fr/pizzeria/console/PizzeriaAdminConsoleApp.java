@@ -2,9 +2,6 @@ package fr.pizzeria.console;
 
 import java.util.Scanner;
 
-
-
-
 /**
  * 
  * 
@@ -20,16 +17,7 @@ public class PizzeriaAdminConsoleApp {
 		Scanner questionUser = new Scanner(System.in);
 		int choix = 0;
 
-//		Pizza[] pizzas = new Pizza[100];
-//		pizzas[0] = new Pizza("PEP", "Pépéroni", 12.50);
-//		pizzas[1] = new Pizza("MAR", "Margherita", 14.00);
-//		pizzas[2] = new Pizza("REI", "La Reine", 11.50);
-//		pizzas[3] = new Pizza("FRO", "La 4 fromages", 12.00);
-//		pizzas[4] = new Pizza("CAN", "La cannibale", 12.50);
-//		pizzas[5] = new Pizza("SAV", "La savoyarde", 13.00);
-//		pizzas[6] = new Pizza("ORI", "L'orientale", 13.50);
-		
-		PizzaDaoMemoire dao = new PizzaDaoMemoire();
+		PizzaDaoMemoireList dao = new PizzaDaoMemoireList();
 
 		do {
 			System.out.println("***** Pizzeria Administration *****");
@@ -64,6 +52,5 @@ public class PizzeriaAdminConsoleApp {
 		} while (choix != 99);
 
 		questionUser.close();
-
 	}
 }

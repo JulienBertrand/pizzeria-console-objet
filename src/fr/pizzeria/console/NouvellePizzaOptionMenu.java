@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 import fr.pizzeria.model.Pizza;
 
-public class NouvellePizzaOptionMenu extends OptionMenu{
+public class NouvellePizzaOptionMenu extends OptionMenu {
 
-	 // création d'un constructeur pour le tableau Pizza[] pizza
+	// création d'un constructeur pour le tableau Pizza[] pizza
 	private Scanner questionUser;
 	private IPizzaDao dao;
 
@@ -14,7 +14,7 @@ public class NouvellePizzaOptionMenu extends OptionMenu{
 		this.dao = dao;
 		this.questionUser = questionUser;
 	}
-	
+
 	public void execute() {
 
 		System.out.println("Ajouter une nouvelle pizza");
@@ -30,9 +30,9 @@ public class NouvellePizzaOptionMenu extends OptionMenu{
 		String prixStr = questionUser.next();
 
 		double prix = Double.parseDouble(prixStr); // conversion du prix en double
-		
-		Pizza nouvellePizza = new Pizza (code, nom, prix);
-		
+
+		Pizza nouvellePizza = new Pizza(code, nom, prix);
+
 		dao.saveNewPizza(nouvellePizza);
 	}
 }

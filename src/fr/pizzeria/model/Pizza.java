@@ -3,10 +3,10 @@ package fr.pizzeria.model;
 public class Pizza {
 	private static int nextId = 0;
 	private int id;
-	private String code; 
+	private String code;
 	private String nom;
 	private double prix;
-	
+
 	public String getCode() {
 		return code;
 	}
@@ -30,6 +30,7 @@ public class Pizza {
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
+
 	public int getId() {
 		return id;
 	}
@@ -46,5 +47,9 @@ public class Pizza {
 		nextId++;
 	}
 
-	
+	public String toString() {
+		return this.code + " > " + this.nom + " > " + this.prix;
+
+	}
+
 }

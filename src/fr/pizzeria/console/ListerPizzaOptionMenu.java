@@ -1,5 +1,7 @@
 package fr.pizzeria.console;
 
+import java.util.ArrayList;
+
 import fr.pizzeria.model.Pizza;
 
 public class ListerPizzaOptionMenu extends OptionMenu {
@@ -15,15 +17,13 @@ public class ListerPizzaOptionMenu extends OptionMenu {
 	public void execute() {
 
 		System.out.println("Liste des pizzas");
-		System.out.println();
-		Pizza[] pizzas = dao.findAllPizzas();
-		for (int i = 0; i < pizzas.length; i++) {
-			if (pizzas[i] != null) {
-				System.out.println(
-						pizzas[i].getCode() + ">" + pizzas[i].getNom() + ">" + pizzas[i].getPrix() + " \u20AC");
-			}
+
+		ArrayList<Pizza> pizzas = dao.findAllPizzas();
+
+		for (Pizza nouvellePizza : pizzas) {
+			System.out.println(nouvellePizza + " \u20AC");
 		}
-		System.out.println();
+
 		System.out.println("**************************************");
 	}
 }

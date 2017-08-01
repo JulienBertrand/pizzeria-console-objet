@@ -2,11 +2,11 @@ package fr.pizzeria.console;
 
 import fr.pizzeria.model.Pizza;
 
-public class PizzaDaoMemoire implements IPizzaDao {
+public class PizzaDaoMemoireTableau implements IPizzaDao {
 
 	Pizza[] pizzas;
 
-	public PizzaDaoMemoire() {
+	public PizzaDaoMemoireTableau() {
 
 		pizzas = new Pizza[100];
 		pizzas[0] = new Pizza("PEP", "Pépéroni", 12.50);
@@ -20,6 +20,11 @@ public class PizzaDaoMemoire implements IPizzaDao {
 
 	@Override
 	public Pizza[] findAllPizzas() {
+		for (int i = 0; i < pizzas.length; i++) {
+			if (pizzas[i] != null) {
+				System.out.println(
+						pizzas[i].getCode() + ">" + pizzas[i].getNom() + ">" + pizzas[i].getPrix() + " \u20AC");
+			}
 		return pizzas;
 	}
 

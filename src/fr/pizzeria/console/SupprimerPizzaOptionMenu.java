@@ -16,10 +16,9 @@ public class SupprimerPizzaOptionMenu extends OptionMenu {
 
 		System.out.println("Suppression d'une pizza");
 		System.out.println();
-
 		System.out.println("Veuillez choisir le code de la pizza à supprimer");
-		String codePizza = questionUser.next();
 
+		String codePizza = questionUser.next();
 		dao.deletePizza(codePizza);
 
 	}

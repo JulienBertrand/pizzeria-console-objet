@@ -1,6 +1,8 @@
 package fr.pizzeria.console;
 
 import fr.pizzeria.model.Pizza;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ModifierPizzaOptionMenu extends OptionMenu {
@@ -20,12 +22,11 @@ public class ModifierPizzaOptionMenu extends OptionMenu {
 		String codePizza = questionUser.next();
 
 		int indexPizza = -1;
-		Pizza[] pizzas = dao.findAllPizzas();
+		ArrayList<Pizza> pizzas = dao.findAllPizzas();
 
-		for (int i = 0; i < pizzas.length; i++) {
-			if (pizzas[i] != null && pizzas[i].getCode().equals(codePizza)) {
+		for (int i = 0; i < dao.findAllPizzas().size(); i++) {
+			if (pizzas != null && dao.findAllPizzas().get(i).getCode().equals(codePizza)) {
 				indexPizza = i;
-
 				break;
 			}
 		}
@@ -46,12 +47,11 @@ public class ModifierPizzaOptionMenu extends OptionMenu {
 			Pizza nouvellePizza = new Pizza(code, nom, prix);
 
 			dao.updatePizza(codePizza, nouvellePizza);
-
 		}
 
-//		else {
-//			System.out.println("Code inexistant :" + codePizza);
-		
+		else {
+			System.out.println("Code inexistant :" + codePizza);
+		}
 
 	}
 
