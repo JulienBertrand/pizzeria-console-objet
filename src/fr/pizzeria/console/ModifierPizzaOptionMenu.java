@@ -3,13 +3,13 @@ package fr.pizzeria.console;
 import fr.pizzeria.model.Pizza;
 import java.util.Scanner;
 
-public class ModifierPizzaOptionMenu extends OptionMenu{
+public class ModifierPizzaOptionMenu extends OptionMenu {
 
-	private Pizza[] pizzas; // création d'un constructeur pour le tableau Pizza[] pizza
 	private Scanner questionUser;
+	private IPizzaDao dao;
 
-	public ModifierPizzaOptionMenu (Pizza[] pizzas, Scanner questionUser) { // constructeur
-		this.pizzas = pizzas;
+	public ModifierPizzaOptionMenu(IPizzaDao dao, Scanner questionUser) { // constructeur
+		this.dao = dao;
 		this.questionUser = questionUser;
 	}
 
@@ -18,15 +18,20 @@ public class ModifierPizzaOptionMenu extends OptionMenu{
 		System.out.println();
 
 		String codePizza = questionUser.next();
+
 		int indexPizza = -1;
+		Pizza[] pizzas = dao.findAllPizzas();
+
 		for (int i = 0; i < pizzas.length; i++) {
-			if (pizzas [i] != null && pizzas[i].getCode().equals(codePizza)) {
+			if (pizzas[i] != null && pizzas[i].getCode().equals(codePizza)) {
 				indexPizza = i;
 
+				break;
 			}
 		}
 
 		if (indexPizza != -1) {
+
 			System.out.println("Veuillez saisir le code:");
 			String code = questionUser.next();
 
@@ -38,11 +43,16 @@ public class ModifierPizzaOptionMenu extends OptionMenu{
 
 			double prix = Double.parseDouble(prixStr);
 
-			pizzas[indexPizza] = new Pizza(code, nom, prix);
-		} else {
-			System.out.println("Code inexistant :" + codePizza);
+			Pizza nouvellePizza = new Pizza(code, nom, prix);
+
+			dao.updatePizza(codePizza, nouvellePizza);
 
 		}
+
+//		else {
+//			System.out.println("Code inexistant :" + codePizza);
+		
+
 	}
 
 }

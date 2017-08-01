@@ -6,14 +6,15 @@ import fr.pizzeria.model.Pizza;
 
 public class NouvellePizzaOptionMenu extends OptionMenu{
 
-	private Pizza[] pizzas; // création d'un constructeur pour le tableau Pizza[] pizza
+	 // création d'un constructeur pour le tableau Pizza[] pizza
 	private Scanner questionUser;
+	private IPizzaDao dao;
 
-	public NouvellePizzaOptionMenu (Pizza[] pizzas, Scanner questionUser) { // constructeur
-		this.pizzas = pizzas;
+	public NouvellePizzaOptionMenu(IPizzaDao dao, Scanner questionUser) { // constructeur
+		this.dao = dao;
 		this.questionUser = questionUser;
 	}
-
+	
 	public void execute() {
 
 		System.out.println("Ajouter une nouvelle pizza");
@@ -29,13 +30,9 @@ public class NouvellePizzaOptionMenu extends OptionMenu{
 		String prixStr = questionUser.next();
 
 		double prix = Double.parseDouble(prixStr); // conversion du prix en double
-		// je créé la nouvelle pizza
-
-		for (int i = 0; i < pizzas.length; i++) {
-			if (pizzas[i] == null) {
-				pizzas[i] = new Pizza(code, nom, prix);
-				break;
-			}
-		}
+		
+		Pizza nouvellePizza = new Pizza (code, nom, prix);
+		
+		dao.saveNewPizza(nouvellePizza);
 	}
 }
